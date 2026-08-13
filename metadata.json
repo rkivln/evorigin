@@ -1,0 +1,6 @@
+{
+  "name": "EVORIGEN",
+  "description": "EVORIGEN Legacy Intelligence Platform",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
