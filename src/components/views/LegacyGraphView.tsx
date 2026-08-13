@@ -170,7 +170,7 @@ export const LegacyGraphView: React.FC = () => {
                     y1={srcNode.y}
                     x2={tgtNode.x}
                     y2={tgtNode.y}
-                    stroke={isHighlighted ? '#252525' : 'rgba(244, 233, 208, 0.10)'}
+                    stroke={isHighlighted ? '#F4E9D0' : 'rgba(244, 233, 208, 0.10)'}
                     strokeWidth={isHighlighted ? 2.5 : 1.5}
                     strokeDasharray={edge.label === 'MENTORING' ? '4 4' : undefined}
                   />
@@ -178,7 +178,7 @@ export const LegacyGraphView: React.FC = () => {
                   <text
                     x={(srcNode.x + tgtNode.x) / 2}
                     y={(srcNode.y + tgtNode.y) / 2 - 4}
-                    fill={isHighlighted ? '#252525' : 'rgba(244, 233, 208, 0.3)'}
+                    fill={isHighlighted ? '#F4E9D0' : 'rgba(244, 233, 208, 0.3)'}
                     fontSize="9"
                     fontFamily="Inter, sans-serif"
                     textAnchor="middle"
@@ -232,7 +232,7 @@ export const LegacyGraphView: React.FC = () => {
                   <text
                     y="38"
                     textAnchor="middle"
-                    fill={isSelected ? '#252525' : '#A8A29E'}
+                    fill={isSelected ? '#F4E9D0' : '#A8A29E'}
                     fontSize="11"
                     fontWeight={isSelected ? 'bold' : 'normal'}
                     fontFamily="Inter, sans-serif"

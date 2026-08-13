@@ -39,7 +39,7 @@ export const SettingsView: React.FC = () => {
             You maintain 100% legal ownership of all uploaded voice recordings, transcripts, decision rules, and graph nodes. EVORIGEN acts solely as an encrypted custodian.
           </p>
 
-          <div className="p-3.5 rounded-xl bg-white border border-surface-border flex items-center justify-between text-xs font-sans shadow-sm">
+          <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between text-xs font-sans shadow-sm">
             <span className="text-primary font-medium">AI Training Consent (Opt-Out Enabled)</span>
             <input
               type="checkbox"
@@ -52,7 +52,7 @@ export const SettingsView: React.FC = () => {
           <div className="pt-2 flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <button
               onClick={handleExport}
-              className="px-5 py-2.5 rounded-full bg-accent hover:bg-yellow-500 text-white font-medium text-xs flex items-center gap-2 transition-all shadow-soft-sm"
+              className="px-5 py-2.5 rounded-full bg-accent hover:brightness-110 text-background font-medium text-xs flex items-center gap-2 transition-all shadow-soft-sm"
             >
               <Download size={14} />
               <span>Export Full Knowledge Package (JSON/GraphML)</span>
@@ -78,7 +78,7 @@ export const SettingsView: React.FC = () => {
           </div>
 
           <div className="space-y-2.5 text-xs font-sans">
-            <div className="p-3.5 rounded-xl bg-white border border-surface-border flex items-center justify-between shadow-sm">
+            <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between shadow-sm">
               <div>
                 <span className="text-primary font-medium block">Priya Sharma (Successor)</span>
                 <span className="text-primary-muted text-[11px]">Queried 'Spindle Vibration Diagnosis'</span>
@@ -86,7 +86,7 @@ export const SettingsView: React.FC = () => {
               <span className="text-primary-light text-[11px]">10m ago</span>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white border border-surface-border flex items-center justify-between shadow-sm">
+            <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between shadow-sm">
               <div>
                 <span className="text-primary font-medium block">SIH Judge Evaluator</span>
                 <span className="text-primary-muted text-[11px]">Graph Inspection Session</span>
@@ -94,7 +94,7 @@ export const SettingsView: React.FC = () => {
               <span className="text-primary-light text-[11px]">1h ago</span>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white border border-surface-border flex items-center justify-between shadow-sm">
+            <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between shadow-sm">
               <div>
                 <span className="text-status-critical-text font-medium block">Permanent Deletion Request</span>
                 <span className="text-primary-muted text-[11px]">3 Sources Purged on Demand</span>

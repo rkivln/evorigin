@@ -51,8 +51,8 @@ export default {
         'soft-sm': '0 4px 12px rgba(0, 0, 0, 0.3)',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['Raleway', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Raleway', 'Space Grotesk', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
     },

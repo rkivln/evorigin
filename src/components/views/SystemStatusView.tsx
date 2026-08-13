@@ -29,13 +29,13 @@ export const SystemStatusView: React.FC = () => {
           return (
             <GlassCard key={idx} variant="default" className="space-y-3">
               <div className="flex items-center justify-between">
-                <div className="p-2.5 rounded-xl bg-white border border-[#252525]/[0.08] text-[#252525]">
+                <div className="p-2.5 rounded-xl bg-surface border border-surface-border text-primary">
                   <Icon size={18} />
                 </div>
-                <span className="text-xs font-sans text-[#777770]">Latency: {s.latency}</span>
+                <span className="text-xs font-sans text-primary-muted">Latency: {s.latency}</span>
               </div>
               <div>
-                <h4 className="text-sm font-medium text-[#252525] font-sans">{s.name}</h4>
+                <h4 className="text-sm font-medium text-primary font-sans">{s.name}</h4>
                 <div className="mt-2 flex items-center justify-between">
                   {s.isOperational ? (
                     <Badge variant="emerald" size="sm" className="flex items-center gap-1.5">
