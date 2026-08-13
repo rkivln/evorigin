@@ -27,6 +27,38 @@ export const LegacyGraphView: React.FC = () => {
   const [filterCategory, setFilterCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+  const handleMouseDown = (e: React.MouseEvent<SVGSVGElement>) => {
+    const target = e.target as SVGElement;
+    if (
+      target.tagName === 'svg' || 
+      target.tagName === 'line' || 
+      target.tagName === 'path' || 
+      target.tagName === 'rect' ||
+      target.tagName === 'text' ||
+      target.classList.contains('canvas-bg')
+    ) {
+      setIsDragging(true);
+      setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent<SVGSVGElement>) => {
+    if (isDragging) {
+      setPan({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
   const categoryColors: Record<string, string> = {
     person: '#3B6488',      // soft denim blue
     skill: '#D4B012',       // muted warm yellow
@@ -151,97 +183,195 @@ export const LegacyGraphView: React.FC = () => {
 
           {/* SVG Canvas Visualization */}
           <svg
-            className="w-full h-full cursor-grab active:cursor-grabbing"
-            viewBox="0 0 900 600"
-            style={{ transform: `scale(${zoomLevel})`, transformOrigin: 'center center' }}
+            className="w-full h-full cursor-grab active:cursor-grabbing select-none"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
           >
-            {/* Draw Graph Edges / Lines */}
-            {edges.map(edge => {
-              const srcNode = nodes.find(n => n.id === edge.source);
-              const tgtNode = nodes.find(n => n.id === edge.target);
-              if (!srcNode || !tgtNode) return null;
+            {/* Transparent click catcher for dragging */}
+            <rect width="100%" height="100%" fill="transparent" className="canvas-bg" />
 
-              const isHighlighted = selectedNode && (selectedNode.id === srcNode.id || selectedNode.id === tgtNode.id);
+            <g style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoomLevel})`, transformOrigin: 'center center' }}>
+              {/* Draw Graph Edges / Lines */}
+              {edges.map(edge => {
+                const srcNode = nodes.find(n => n.id === edge.source);
+                const tgtNode = nodes.find(n => n.id === edge.target);
+                if (!srcNode || !tgtNode) return null;
 
-              return (
-                <g key={edge.id}>
-                  <line
-                    x1={srcNode.x}
-                    y1={srcNode.y}
-                    x2={tgtNode.x}
-                    y2={tgtNode.y}
-                    stroke={isHighlighted ? '#F4E9D0' : 'rgba(244, 233, 208, 0.10)'}
-                    strokeWidth={isHighlighted ? 2.5 : 1.5}
-                    strokeDasharray={edge.label === 'MENTORING' ? '4 4' : undefined}
-                  />
-                  {/* Relationship Text Label */}
-                  <text
-                    x={(srcNode.x + tgtNode.x) / 2}
-                    y={(srcNode.y + tgtNode.y) / 2 - 4}
-                    fill={isHighlighted ? '#F4E9D0' : 'rgba(244, 233, 208, 0.3)'}
-                    fontSize="9"
-                    fontFamily="Inter, sans-serif"
-                    textAnchor="middle"
+                const isHighlighted = selectedNode && (selectedNode.id === srcNode.id || selectedNode.id === tgtNode.id);
+
+                const x1 = srcNode.x;
+                const y1 = srcNode.y;
+                const x2 = tgtNode.x;
+                const y2 = tgtNode.y;
+
+                const dx = x2 - x1;
+                const dy = y2 - y1;
+                const dr = Math.sqrt(dx * dx + dy * dy);
+
+                // Standard arc bending factor
+                const bendFactor = 22;
+                const mx = (x1 + x2) / 2;
+                const my = (y1 + y2) / 2;
+                const px = -dy / dr;
+                const py = dx / dr;
+                const cx = mx + px * bendFactor;
+                const cy = my + py * bendFactor;
+
+                const pathData = `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`;
+
+                // Text coordinates (midpoint of quadratic bezier)
+                const labelX = 0.25 * x1 + 0.5 * cx + 0.25 * x2;
+                const labelY = 0.25 * y1 + 0.5 * cy + 0.25 * y2;
+                const labelWidth = edge.label.length * 6 + 12;
+
+                return (
+                  <g key={edge.id}>
+                    {/* Outer subtle glow/width line */}
+                    <path
+                      d={pathData}
+                      fill="none"
+                      stroke={isHighlighted ? '#B89B5E' : 'rgba(244, 233, 208, 0.05)'}
+                      strokeWidth={isHighlighted ? 4 : 2}
+                      className="opacity-20 transition-all duration-300"
+                    />
+                    {/* Primary Connection Line */}
+                    <path
+                      id={`path-${edge.id}`}
+                      d={pathData}
+                      fill="none"
+                      stroke={isHighlighted ? '#F4E9D0' : 'rgba(244, 233, 208, 0.12)'}
+                      strokeWidth={isHighlighted ? 2 : 1.25}
+                      strokeDasharray={edge.label === 'MENTORING' ? '4 3' : undefined}
+                      className="transition-all duration-300"
+                    />
+
+                    {/* Flowing animated signal particles along highlighted connections */}
+                    {isHighlighted && (
+                      <circle r="3" fill="#F4E9D0" className="opacity-95 filter drop-shadow-[0_0_3px_#F4E9D0]">
+                        <animateMotion
+                          dur="2.5s"
+                          repeatCount="indefinite"
+                          path={pathData}
+                        />
+                      </circle>
+                    )}
+
+                    {/* Relationship Label with Backdrop */}
+                    <g className="transition-all duration-300">
+                      <rect
+                        x={labelX - labelWidth / 2}
+                        y={labelY - 7.5}
+                        width={labelWidth}
+                        height={15}
+                        fill="#0B0B09"
+                        stroke={isHighlighted ? 'rgba(184, 155, 94, 0.3)' : 'rgba(244, 233, 208, 0.08)'}
+                        strokeWidth={1}
+                        rx={4}
+                      />
+                      <text
+                        x={labelX}
+                        y={labelY + 3.5}
+                        fill={isHighlighted ? '#F4E9D0' : '#A8A29E'}
+                        fontSize="8.5"
+                        fontFamily="JetBrains Mono, monospace"
+                        fontWeight="500"
+                        textAnchor="middle"
+                      >
+                        {edge.label}
+                      </text>
+                    </g>
+                  </g>
+                );
+              })}
+
+              {/* Draw Graph Nodes */}
+              {filteredNodes.map(node => {
+                const isSelected = selectedNode?.id === node.id;
+                const nodeColor = categoryColors[node.category] || '#B89B5E';
+                const nodeLabelWidth = node.label.length * 6.5 + 16;
+
+                return (
+                  <g
+                    key={node.id}
+                    transform={`translate(${node.x}, ${node.y})`}
+                    onClick={() => setSelectedNode(node)}
+                    className="cursor-pointer group"
                   >
-                    {edge.label}
-                  </text>
-                </g>
-              );
-            })}
+                    {/* Outer selection ring animation */}
+                    {isSelected && (
+                      <circle
+                        r="36"
+                        fill="none"
+                        stroke={nodeColor}
+                        strokeWidth="1.5"
+                        className="animate-ping opacity-25"
+                      />
+                    )}
 
-            {/* Draw Graph Nodes */}
-            {filteredNodes.map(node => {
-              const isSelected = selectedNode?.id === node.id;
-              const nodeColor = categoryColors[node.category] || '#B89B5E';
-
-              return (
-                <g
-                  key={node.id}
-                  transform={`translate(${node.x}, ${node.y})`}
-                  onClick={() => setSelectedNode(node)}
-                  className="cursor-pointer group"
-                >
-                  {/* Selection Ring Glow */}
-                  {isSelected && (
+                    {/* Node Outer Ring boundary */}
                     <circle
-                      r="32"
+                      r={isSelected ? 26 : 22}
+                      fill="#11110E"
+                      stroke={isSelected ? nodeColor : 'rgba(244, 233, 208, 0.08)'}
+                      strokeWidth={isSelected ? 2.5 : 1}
+                      className="transition-all duration-300 shadow-lg"
+                    />
+
+                    {/* Intermediary dashed fine technical ring */}
+                    <circle
+                      r={isSelected ? 20 : 17}
                       fill="none"
                       stroke={nodeColor}
-                      strokeWidth="2"
-                      className="animate-ping opacity-40"
+                      strokeWidth="0.75"
+                      strokeDasharray="3 2"
+                      className="opacity-40 transition-all duration-300"
                     />
-                  )}
 
-                  {/* Outer Outer Circle */}
-                  <circle
-                    r={isSelected ? 26 : 22}
-                    fill="#11110E"
-                    stroke={isSelected ? nodeColor : 'rgba(244, 233, 208, 0.10)'}
-                    strokeWidth={isSelected ? 3 : 1.5}
-                    className="transition-all hover:stroke-[#B89B5E]"
-                  />
+                    {/* Center core badge */}
+                    <circle
+                      r={isSelected ? 9 : 7}
+                      fill={nodeColor}
+                      className="transition-all duration-300"
+                    />
 
-                  {/* Inner Node Color Badge */}
-                  <circle
-                    r="12"
-                    fill={nodeColor}
-                    fillOpacity={0.9}
-                  />
+                    {/* Center technical target mini-dot */}
+                    <circle
+                      r="3"
+                      fill="#0B0B09"
+                      className="opacity-90"
+                    />
 
-                  {/* Text Label Below Node */}
-                  <text
-                    y="38"
-                    textAnchor="middle"
-                    fill={isSelected ? '#F4E9D0' : '#A8A29E'}
-                    fontSize="11"
-                    fontWeight={isSelected ? 'bold' : 'normal'}
-                    fontFamily="Inter, sans-serif"
-                  >
-                    {node.label}
-                  </text>
-                </g>
-              );
-            })}
+                    {/* Label Capsule Backdrop */}
+                    <g transform="translate(0, 38)">
+                      <rect
+                        x={-nodeLabelWidth / 2}
+                        y={-8}
+                        width={nodeLabelWidth}
+                        height={17}
+                        fill="#11110E"
+                        stroke={isSelected ? nodeColor : 'rgba(244, 233, 208, 0.08)'}
+                        strokeWidth={1}
+                        rx={8.5}
+                        className="transition-all duration-300"
+                      />
+                      <text
+                        textAnchor="middle"
+                        y={3.5}
+                        fill={isSelected ? '#F4E9D0' : '#A8A29E'}
+                        fontSize="9.5"
+                        fontFamily="Raleway, sans-serif"
+                        fontWeight={isSelected ? '650' : '500'}
+                        className="transition-colors duration-300"
+                      >
+                        {node.label}
+                      </text>
+                    </g>
+                  </g>
+                );
+              })}
+            </g>
           </svg>
         </div>
 

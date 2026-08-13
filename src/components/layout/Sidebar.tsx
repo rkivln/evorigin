@@ -65,15 +65,14 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
       }`}
     >
       {/* Brand Header */}
-      <div className="h-16 px-4 flex items-center justify-between border-b border-surface-border">
+      <div className={`h-16 px-4 flex items-center border-b border-surface-border ${
+        collapsed ? 'justify-center' : 'justify-between'
+      }`}>
         {!collapsed && (
           <button 
             onClick={() => setActivePage('landing')}
-            className="flex items-center gap-2.5 text-left group"
+            className="flex items-center text-left group"
           >
-            <div className="w-8 h-8 rounded-xl bg-surface-subtle border border-accent/40 flex items-center justify-center text-accent font-serif text-lg font-bold italic shadow-soft-sm">
-              E
-            </div>
             <div>
               <span className="font-sans font-medium text-base tracking-tight text-primary block leading-none">
                 EVORIGEN
@@ -82,15 +81,6 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
                 Legacy Intelligence
               </span>
             </div>
-          </button>
-        )}
-
-        {collapsed && (
-          <button 
-            onClick={() => setActivePage('landing')}
-            className="mx-auto w-8 h-8 rounded-xl bg-surface-subtle border border-accent/40 flex items-center justify-center text-accent font-serif text-lg font-bold italic shadow-soft-sm"
-          >
-            E
           </button>
         )}
 
