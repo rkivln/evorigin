@@ -48,14 +48,14 @@ console.log(data.answer, data.sources, data.graphNodes);`;
           </div>
           <button
             onClick={() => handleCopy(99)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-soft hover:bg-surface-subtle text-primary font-medium transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-control bg-surface-soft hover:bg-surface-subtle text-primary font-medium transition-all shadow-sm"
           >
             {copiedIdx === 99 ? <CheckCircle2 size={14} className="text-status-success-text" /> : <Copy size={14} />}
             <span>{copiedIdx === 99 ? 'Copied' : 'Copy Code'}</span>
           </button>
         </div>
 
-        <div className="rounded-2xl bg-surface-subtle p-4 text-amber-200 border border-slate-700 font-mono overflow-x-auto leading-relaxed shadow-sm">
+        <div className="rounded-control bg-surface-subtle p-4 text-amber-200 border border-slate-700 font-mono overflow-x-auto leading-relaxed shadow-sm">
           <pre>{sampleSnippet}</pre>
         </div>
       </GlassCard>

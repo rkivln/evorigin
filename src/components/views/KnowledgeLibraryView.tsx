@@ -48,7 +48,7 @@ export const KnowledgeLibraryView: React.FC = () => {
             placeholder="Search generations of knowledge… e.g. 'How did previous engineers diagnose spindle vibration?'"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-surface border border-surface-border focus:border-accent/40 rounded-full py-3.5 pl-12 pr-4 text-xs text-primary placeholder-[#A8A29E] focus:outline-none shadow-sm font-sans"
+            className="w-full bg-surface border border-surface-border focus:border-accent/40 rounded-control py-3.5 pl-12 pr-4 text-xs text-primary placeholder-[#A8A29E] focus:outline-none shadow-sm font-sans"
           />
           <Search size={18} className="absolute left-4 top-4 text-primary" />
         </div>
@@ -60,7 +60,7 @@ export const KnowledgeLibraryView: React.FC = () => {
             <button
               key={domain}
               onClick={() => setSelectedDomain(domain)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-sans transition-all ${
+              className={`px-3.5 py-1.5 rounded-control text-xs font-sans transition-all ${
                 selectedDomain === domain
                   ? 'bg-surface-subtle text-primary font-medium shadow-sm'
                   : 'bg-surface/80 text-primary-muted hover:text-primary border border-surface-border'
@@ -91,12 +91,12 @@ export const KnowledgeLibraryView: React.FC = () => {
               </div>
             </div>
 
-            <p className="text-xs text-primary-muted leading-relaxed bg-surface/90 p-3.5 rounded-2xl border border-surface-border">
+            <p className="text-xs text-primary-muted leading-relaxed bg-surface/90 p-3.5 rounded-control border border-surface-border">
               {item.summary}
             </p>
 
             {item.keyDecisionPattern && (
-              <div className="p-3 rounded-2xl bg-accent/10 border border-accent/30 text-primary text-xs font-sans">
+              <div className="p-3 rounded-control bg-accent/10 border border-accent/30 text-primary text-xs font-sans">
                 💡 Key Decision Pattern: "{item.keyDecisionPattern}"
               </div>
             )}
@@ -115,7 +115,7 @@ export const KnowledgeLibraryView: React.FC = () => {
             <div className="flex items-center justify-between pt-1">
               <div className="flex flex-wrap gap-1">
                 {item.tags.map((t, idx) => (
-                  <span key={idx} className="text-[10px] font-sans px-2.5 py-0.5 rounded-full bg-surface/80 text-primary-muted border border-surface-border">
+                  <span key={idx} className="text-[10px] font-sans px-2.5 py-0.5 rounded-control bg-surface/80 text-primary-muted border border-surface-border">
                     #{t}
                   </span>
                 ))}
@@ -123,7 +123,7 @@ export const KnowledgeLibraryView: React.FC = () => {
 
               <button
                 onClick={() => handleQueryAI(`Give me full details on "${item.title}" by ${item.expert}`)}
-                className="px-3.5 py-1.5 rounded-full bg-surface-soft hover:bg-surface-subtle text-primary text-xs font-medium flex items-center gap-1.5 shadow-sm transition-all"
+                className="px-3.5 py-1.5 rounded-control bg-surface-soft hover:bg-surface-subtle text-primary text-xs font-medium flex items-center gap-1.5 shadow-sm transition-all"
               >
                 <Bot size={13} className="text-accent" />
                 <span>Ask AI</span>

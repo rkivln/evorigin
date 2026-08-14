@@ -20,7 +20,7 @@ export const JudgeDemoGuide: React.FC = () => {
         {/* Top Header */}
         <div className="flex items-center justify-between border-b border-surface-border pb-3 mb-3">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 rounded-full bg-accent text-background">
+            <div className="p-1.5 rounded-control bg-accent text-background">
               <Sparkles size={14} />
             </div>
             <div>
@@ -35,7 +35,7 @@ export const JudgeDemoGuide: React.FC = () => {
 
           <button
             onClick={exitJudgeDemo}
-            className="p-1.5 text-primary-muted hover:text-primary rounded-full hover:bg-surface-subtle transition-colors"
+            className="p-1.5 text-primary-muted hover:text-primary rounded-control hover:bg-surface-subtle transition-colors"
             title="Exit Judge Tour"
           >
             <X size={16} />
@@ -43,7 +43,7 @@ export const JudgeDemoGuide: React.FC = () => {
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full h-1.5 bg-surface-subtle rounded-full mb-3 overflow-hidden">
+        <div className="w-full h-1.5 bg-surface-subtle rounded-control mb-3 overflow-hidden">
           <div
             className="h-full bg-accent transition-all duration-300 shadow-soft-sm"
             style={{ width: `${(currentJudgeStep / 10) * 100}%` }}
@@ -58,7 +58,7 @@ export const JudgeDemoGuide: React.FC = () => {
           <p className="text-xs text-primary-muted leading-relaxed">
             {judgeStepData.description}
           </p>
-          <div className="mt-2.5 p-3 rounded-xl bg-accent/20 border border-accent/30 flex items-start gap-2.5 text-xs text-accent-soft">
+          <div className="mt-2.5 p-3 rounded-control bg-accent/20 border border-accent/30 flex items-start gap-2.5 text-xs text-accent-soft">
             <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
             <span>{judgeStepData.highlightText}</span>
           </div>
@@ -69,10 +69,10 @@ export const JudgeDemoGuide: React.FC = () => {
           <button
             onClick={prevJudgeStep}
             disabled={currentJudgeStep === 1}
-            className={`flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-medium transition-all ${
+            className={`flex items-center gap-1 px-4 py-1.5 rounded-control text-xs font-medium transition-all ${
               currentJudgeStep === 1
                 ? 'opacity-40 text-primary-light cursor-not-allowed'
-                : 'bg-surface-soft hover:bg-surface-subtle border border-surface-border text-primary'
+                : 'bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.05)] hover:-translate-y-[1px] hover:border-[rgba(255,255,255,0.11)] transition-all text-primary'
             }`}
           >
             <ChevronLeft size={14} />
@@ -83,7 +83,7 @@ export const JudgeDemoGuide: React.FC = () => {
             {Array.from({ length: 10 }).map((_, i) => (
               <span
                 key={i}
-                className={`h-2 rounded-full transition-all ${
+                className={`h-2 rounded-control transition-all ${
                   i + 1 === currentJudgeStep
                     ? 'w-5 bg-accent'
                     : i + 1 < currentJudgeStep
@@ -96,7 +96,7 @@ export const JudgeDemoGuide: React.FC = () => {
 
           <button
             onClick={nextJudgeStep}
-            className="flex items-center gap-1 px-4 py-1.5 rounded-full bg-accent hover:brightness-110 text-background font-medium text-xs shadow-soft-sm transition-all"
+            className="flex items-center gap-1 px-4 py-1.5 rounded-control bg-accent text-white shadow-glow-accent hover:-translate-y-[1px] hover:shadow-[0_8px_24px_rgba(255,112,67,0.16)] transition-all font-medium text-xs shadow-soft-sm transition-all"
           >
             <span>{currentJudgeStep === 10 ? 'Finish Tour' : 'Next Step'}</span>
             <ChevronRight size={14} />

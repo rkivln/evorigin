@@ -32,10 +32,10 @@ export const DatabaseSchemaView: React.FC = () => {
               <button
                 key={t.name}
                 onClick={() => setSelectedTable(t.name)}
-                className={`w-full text-left p-3 rounded-2xl border transition-all flex items-center justify-between ${
+                className={`w-full text-left p-3 rounded-control border transition-all flex items-center justify-between ${
                   selectedTable === t.name
                     ? 'bg-surface-soft border-surface-border text-primary font-medium shadow-sm'
-                    : 'bg-surface border-surface-border text-primary-muted hover:text-primary hover:bg-surface-soft'
+                    : 'bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[#EDEDEF] hover:bg-[rgba(255,255,255,0.05)] hover:-translate-y-[1px] transition-all'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -66,7 +66,7 @@ export const DatabaseSchemaView: React.FC = () => {
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 font-mono text-xs">
               {activeTableObj.fields.map((f, idx) => (
-                <div key={idx} className="p-3.5 rounded-2xl bg-surface border border-surface-border flex items-center gap-2.5 shadow-sm">
+                <div key={idx} className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center gap-2.5 shadow-sm">
                   <Key size={14} className="text-status-warning-text shrink-0" />
                   <span className="text-primary font-medium">{f}</span>
                 </div>
@@ -74,7 +74,7 @@ export const DatabaseSchemaView: React.FC = () => {
             </div>
           </div>
 
-          <div className="p-5 rounded-2xl bg-surface border border-accent/30 text-xs font-sans space-y-2 shadow-sm">
+          <div className="p-5 rounded-control bg-surface border border-accent/30 text-xs font-sans space-y-2 shadow-sm">
             <span className="text-status-warning-text font-medium block">Foreign Key &amp; Graph Relations</span>
             <p className="text-primary leading-relaxed">
               <code className="bg-accent/10 px-1.5 py-0.5 rounded text-primary font-mono">KnowledgeItems.id</code> connects 1-to-Many with <code className="bg-accent/10 px-1.5 py-0.5 rounded text-primary font-mono">GraphNodes.id</code> and generates embeddings stored in Qdrant Vector Index collection <code className="bg-accent/10 px-1.5 py-0.5 rounded text-primary font-mono">evorig_knowledge_v1</code>.

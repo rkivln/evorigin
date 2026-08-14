@@ -72,7 +72,7 @@ const MainContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-primary flex flex-col font-sans selection:bg-accent selection:text-background">
+    <div className="min-h-screen bg-transparent text-primary flex flex-col font-sans selection:bg-accent selection:text-background">
 
       <div className="flex flex-1 relative">
         {/* Sidebar */}

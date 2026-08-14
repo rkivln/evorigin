@@ -68,7 +68,7 @@ export const FutureSimulatorView: React.FC = () => {
             <select
               value={selectedDecision}
               onChange={(e) => setSelectedDecision(e.target.value)}
-              className="w-full bg-surface border border-surface-border focus:border-accent/40 rounded-2xl p-3 text-xs text-primary focus:outline-none font-sans shadow-sm"
+              className="w-full bg-surface border border-surface-border focus:border-accent/40 rounded-control p-3 text-xs text-primary focus:outline-none font-sans shadow-sm"
             >
               <option value="Replace experienced maintenance team with automated process">
                 Replace experienced maintenance team with automated process
@@ -114,7 +114,7 @@ export const FutureSimulatorView: React.FC = () => {
           <button
             onClick={handleRunSimulation}
             disabled={isSimulating}
-            className={`px-6 py-2.5 rounded-full font-medium text-xs flex items-center gap-2 transition-all ${
+            className={`px-6 py-2.5 rounded-control font-medium text-xs flex items-center gap-2 transition-all ${
               isSimulating
                 ? 'bg-surface-subtle text-primary-muted opacity-50 cursor-not-allowed'
                 : 'bg-surface-soft hover:bg-surface-subtle text-primary shadow-sm'

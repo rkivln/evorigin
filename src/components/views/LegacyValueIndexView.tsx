@@ -68,7 +68,7 @@ export const LegacyValueIndexView: React.FC = () => {
             </p>
           </div>
 
-          <div className="text-center sm:text-right bg-surface/90 p-4 rounded-2xl border border-surface-border shadow-sm">
+          <div className="text-center sm:text-right bg-surface/90 p-4 rounded-control border border-surface-border shadow-sm">
             <span className="text-[10px] font-sans text-primary-muted uppercase tracking-widest block font-medium">
               Computed LVS Score
             </span>

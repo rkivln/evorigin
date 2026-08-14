@@ -43,7 +43,7 @@ export const AiProcessingView: React.FC = () => {
           <button
             onClick={runProcessingPipeline}
             disabled={isProcessingPipeline}
-            className={`px-5 py-2.5 rounded-full text-xs font-medium flex items-center gap-2 transition-all ${
+            className={`px-5 py-2.5 rounded-control text-xs font-medium flex items-center gap-2 transition-all ${
               isProcessingPipeline
                 ? 'bg-surface/80 text-primary-muted cursor-not-allowed border border-surface-border'
                 : 'bg-accent hover:brightness-110 text-primary shadow-sm'
@@ -67,9 +67,9 @@ export const AiProcessingView: React.FC = () => {
           </span>
         </div>
 
-        <div className="w-full h-2.5 bg-surface/80 rounded-full overflow-hidden p-0.5 border border-surface-border">
+        <div className="w-full h-2.5 bg-surface/80 rounded-control overflow-hidden p-0.5 border border-surface-border">
           <div
-            className="h-full bg-surface-subtle rounded-full transition-all duration-300"
+            className="h-full bg-surface-subtle rounded-control transition-all duration-300"
             style={{ width: `${processingProgress}%` }}
           />
         </div>
@@ -105,9 +105,9 @@ export const AiProcessingView: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className={`p-3 rounded-2xl border text-xs font-sans flex items-center justify-between transition-all ${
+                  className={`p-3 rounded-control border text-xs font-sans flex items-center justify-between transition-all ${
                     isDone
-                      ? 'bg-[#E5F2D8] border-[#C2E0A8] text-status-success-text'
+                      ? 'bg-status-success border-status-success-text/30 text-status-success-text'
                       : 'bg-surface/80 border-surface-border text-primary-muted'
                   }`}
                 >
@@ -134,7 +134,7 @@ export const AiProcessingView: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            <div className="p-4 rounded-2xl bg-surface/90 border border-surface-border space-y-1">
+            <div className="p-4 rounded-control bg-surface/90 border border-surface-border space-y-1">
               <span className="text-[10px] font-sans text-primary-muted uppercase tracking-wider font-medium">Skill Identified</span>
               <h4 className="text-sm font-medium text-primary font-sans">Industrial Vibration Diagnosis</h4>
               <p className="text-xs text-primary-muted">
@@ -142,7 +142,7 @@ export const AiProcessingView: React.FC = () => {
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-surface/90 border border-surface-border space-y-1">
+            <div className="p-4 rounded-control bg-surface/90 border border-surface-border space-y-1">
               <span className="text-[10px] font-sans text-primary-muted uppercase tracking-wider font-medium">Decision Pattern</span>
               <h4 className="text-sm font-medium text-primary font-sans">Check foundation alignment before replacing bearings</h4>
               <p className="text-xs text-primary-muted">
@@ -151,24 +151,24 @@ export const AiProcessingView: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-2 gap-2 text-xs font-sans">
-              <div className="p-3 rounded-2xl bg-surface/80 border border-surface-border">
+              <div className="p-3 rounded-control bg-surface/80 border border-surface-border">
                 <span className="text-primary-muted block text-[10px]">Experience Level</span>
                 <span className="text-status-success-text font-medium">34 Years (Expert)</span>
               </div>
-              <div className="p-3 rounded-2xl bg-surface/80 border border-surface-border">
+              <div className="p-3 rounded-control bg-surface/80 border border-surface-border">
                 <span className="text-primary-muted block text-[10px]">Source Evidence</span>
                 <span className="text-status-info-text font-medium">Interview — 14:32</span>
               </div>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-status-success/10 border border-status-success-text/30 text-status-success-text text-status-success-text text-xs font-sans">
+            <div className="p-3.5 rounded-full bg-status-success/10 border border-status-success-text/30 text-status-success-text text-status-success-text text-xs font-sans">
               ✓ Verified Outcome: Reduced unnecessary component replacement by 84% ($1.4M saved)
             </div>
 
             <div className="pt-2">
               <button
                 onClick={() => setActivePage('graph')}
-                className="w-full py-3 rounded-full bg-surface-soft hover:bg-surface-subtle text-primary font-medium text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
+                className="w-full py-3 rounded-control bg-surface-soft hover:bg-surface-subtle text-primary font-medium text-xs flex items-center justify-center gap-2 shadow-sm transition-all"
               >
                 <span>Publish to Universal Legacy Graph</span>
                 <ArrowRight size={14} className="text-accent" />

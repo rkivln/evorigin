@@ -65,7 +65,7 @@ export const MultiDomainView: React.FC = () => {
               className="space-y-3 cursor-pointer"
             >
               <div className="flex items-center justify-between">
-                <div className={`p-2.5 rounded-xl bg-surface border border-surface-border ${d.color}`}>
+                <div className={`p-2.5 rounded-control bg-surface border border-surface-border ${d.color}`}>
                   <Icon size={20} />
                 </div>
                 {isActive && <Badge variant="gold">Active View</Badge>}
@@ -89,15 +89,15 @@ export const MultiDomainView: React.FC = () => {
           </div>
 
           <div className="space-y-3">
-            <div className="p-3.5 rounded-2xl bg-surface border border-surface-border text-xs font-sans text-primary font-medium shadow-sm">
+            <div className="p-3.5 rounded-control bg-surface border border-surface-border text-xs font-sans text-primary font-medium shadow-sm">
               User Question: “How did grandmother handle difficult financial situations?”
             </div>
 
-            <div className="p-5 rounded-2xl bg-surface border border-surface-border space-y-3 text-xs leading-relaxed text-primary shadow-sm">
+            <div className="p-5 rounded-control bg-surface border border-surface-border space-y-3 text-xs leading-relaxed text-primary shadow-sm">
               <p className="font-sans text-primary-muted">
                 Based on preserved oral history recordings from Late Savitri Ammal (1982 Cassette Tape #03):
               </p>
-              <blockquote className="p-4 rounded-xl bg-accent/10 border-l-4 border-accent/30 text-primary italic font-serif text-sm">
+              <blockquote className="p-4 rounded-control bg-accent/10 border-l-4 border-accent/30 text-primary italic font-serif text-sm">
                 “Never mortgage primary ancestral farmland for short-term liquidity; utilize gold-backed emergency credit lines during agrarian drought cycles. Maintain 18 months of grain & emergency reserves before any capital expansion.”
               </blockquote>
               <div className="flex flex-wrap items-center gap-3 text-[11px] font-sans text-primary-muted pt-2 border-t border-surface-border">
@@ -127,18 +127,18 @@ export const MultiDomainView: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs font-sans">
-              <div className="p-4 rounded-2xl bg-surface border border-surface-border space-y-1 shadow-sm">
+              <div className="p-4 rounded-control bg-surface border border-surface-border space-y-1 shadow-sm">
                 <span className="text-status-warning-text block font-medium">Endangered Term</span>
                 <p className="text-primary text-sm font-medium">"Agni-Kumbh Pitch"</p>
                 <p className="text-primary-muted text-[11px]">Terracotta Kiln Harmonic</p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-surface border border-surface-border space-y-1 shadow-sm">
+              <div className="p-4 rounded-control bg-surface border border-surface-border space-y-1 shadow-sm">
                 <span className="text-status-info-text block font-medium">Contextual Meaning</span>
                 <p className="text-primary leading-relaxed">Resonant sound of kiln airflow indicating 1150°C temperature.</p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-surface border border-surface-border space-y-1 shadow-sm">
+              <div className="p-4 rounded-control bg-surface border border-surface-border space-y-1 shadow-sm">
                 <span className="text-status-success-text block font-medium">Master Speaker</span>
                 <p className="text-primary font-medium">Master Ramanathan (79 yrs)</p>
                 <p className="text-primary-muted text-[11px]">Kumbakonam Region</p>
@@ -159,7 +159,7 @@ export const MultiDomainView: React.FC = () => {
             <Badge variant="emerald">Bay of Bengal Delta</Badge>
           </div>
 
-          <div className="p-5 rounded-2xl bg-surface border border-surface-border space-y-2 text-xs font-sans shadow-sm">
+          <div className="p-5 rounded-control bg-surface border border-surface-border space-y-2 text-xs font-sans shadow-sm">
             <span className="text-status-info-text font-medium block">Community Query: “What worked during the previous cyclone evacuation?”</span>
             <p className="text-primary leading-relaxed">
               Captured recovery wisdom: Shallow-draft boat paths through shifted sandbars post-surge are marked by the eastern mangrove tree line. Emergency solar water filtration pads located at Village #4.
@@ -180,17 +180,17 @@ export const MultiDomainView: React.FC = () => {
           </div>
 
           <div className="space-y-2.5 text-xs font-sans">
-            <div className="p-3.5 rounded-2xl bg-surface border border-surface-border flex items-center justify-between shadow-sm">
+            <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between shadow-sm">
               <span className="text-primary font-medium">Historical Research Manuscripts (.pdf)</span>
               <Badge variant="emerald">Transferable to Heirs</Badge>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-surface border border-surface-border flex items-center justify-between shadow-sm">
+            <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between shadow-sm">
               <span className="text-primary font-medium">Family Photo Archives (1975-2025)</span>
               <Badge variant="cyan">Protected Archive</Badge>
             </div>
 
-            <div className="p-3.5 rounded-2xl bg-surface border border-surface-border flex items-center justify-between shadow-sm">
+            <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between shadow-sm">
               <span className="text-primary font-medium">Engineering Patent Drafts</span>
               <Badge variant="gold">Organization Succession</Badge>
             </div>

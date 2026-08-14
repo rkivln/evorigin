@@ -58,15 +58,15 @@ export const KnowledgeTransferView: React.FC = () => {
       <GlassCard variant="gold" className="p-6 text-center space-y-4">
         <Badge variant="gold">Generational Transfer Flow</Badge>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-xs font-sans">
-          <div className="p-3.5 rounded-2xl bg-surface border border-surface-border text-primary font-medium shadow-sm">
+          <div className="p-3.5 rounded-control bg-surface border border-surface-border text-primary font-medium shadow-sm">
             Expert Knowledge (Dr. Arun — 34 yrs)
           </div>
           <ArrowRight size={18} className="text-primary rotate-90 sm:rotate-0 shrink-0" />
-          <div className="p-3.5 rounded-2xl bg-accent/20 border border-accent/30 text-primary font-medium shadow-sm">
+          <div className="p-3.5 rounded-control bg-accent/20 border border-accent/30 text-primary font-medium shadow-sm">
             AI-Generated Learning Path
           </div>
           <ArrowRight size={18} className="text-primary rotate-90 sm:rotate-0 shrink-0" />
-          <div className="p-3.5 rounded-2xl bg-surface border border-surface-border text-status-info-text font-medium shadow-sm">
+          <div className="p-3.5 rounded-control bg-surface border border-surface-border text-status-info-text font-medium shadow-sm">
             Future Learner (Priya Sharma — Successor)
           </div>
         </div>
@@ -90,10 +90,10 @@ export const KnowledgeTransferView: React.FC = () => {
                   setQuizSubmitted(false);
                   setSelectedQuizOption(null);
                 }}
-                className={`w-full text-left p-3.5 rounded-2xl border transition-all ${
+                className={`w-full text-left p-3.5 rounded-control border transition-all ${
                   activeStep === idx
                     ? 'bg-surface-soft border-surface-border text-primary shadow-sm'
-                    : 'bg-surface border-surface-border text-primary-muted hover:text-primary hover:bg-surface-soft'
+                    : 'bg-[rgba(255,255,255,0.035)] border border-[rgba(255,255,255,0.08)] text-[#EDEDEF] hover:bg-[rgba(255,255,255,0.05)] hover:-translate-y-[1px] transition-all'
                 }`}
               >
                 <div className="text-xs font-medium font-sans">{step.title}</div>
@@ -123,7 +123,7 @@ export const KnowledgeTransferView: React.FC = () => {
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-surface border border-surface-border space-y-2 text-xs font-sans shadow-sm">
+          <div className="p-4 rounded-control bg-surface border border-surface-border space-y-2 text-xs font-sans shadow-sm">
             <div className="flex items-center gap-2 text-status-warning-text font-medium">
               <Lightbulb size={16} />
               <span>Tacit Intuition Guideline</span>
@@ -135,7 +135,7 @@ export const KnowledgeTransferView: React.FC = () => {
 
           {/* Interactive Quiz Scenario on Step 4 */}
           {activeStep === 3 && (
-            <div className="p-5 rounded-2xl bg-surface border border-accent/30 space-y-4 shadow-sm animate-in fade-in">
+            <div className="p-5 rounded-control bg-surface border border-accent/30 space-y-4 shadow-sm animate-in fade-in">
               <div className="flex items-center gap-2 text-primary font-medium text-xs">
                 <HelpCircle size={16} className="text-status-info-text" />
                 <span>Practice Scenario Quiz: CNC Vibration Anomaly</span>
@@ -150,7 +150,7 @@ export const KnowledgeTransferView: React.FC = () => {
                   <button
                     key={idx}
                     onClick={() => setSelectedQuizOption(idx)}
-                    className={`w-full text-left p-3.5 rounded-xl border text-xs font-sans transition-all ${
+                    className={`w-full text-left p-3.5 rounded-control border text-xs font-sans transition-all ${
                       selectedQuizOption === idx
                         ? 'bg-accent/10 border-accent/30 text-primary font-medium shadow-sm'
                         : 'bg-surface border-surface-border text-primary-muted hover:bg-surface hover:text-primary'
@@ -165,7 +165,7 @@ export const KnowledgeTransferView: React.FC = () => {
                 <button
                   onClick={() => setQuizSubmitted(true)}
                   disabled={selectedQuizOption === null}
-                  className={`px-5 py-2.5 rounded-full font-medium text-xs transition-all ${
+                  className={`px-5 py-2.5 rounded-control font-medium text-xs transition-all ${
                     selectedQuizOption !== null
                       ? 'bg-surface-soft hover:bg-surface-subtle text-primary shadow-sm'
                       : 'bg-surface-subtle opacity-50 text-primary-muted cursor-not-allowed'
@@ -196,7 +196,7 @@ export const KnowledgeTransferView: React.FC = () => {
                 setSelectedQuizOption(null);
               }}
               disabled={activeStep === 0}
-              className="px-4 py-2 rounded-full bg-surface border border-surface-border text-primary hover:bg-surface-soft text-xs font-medium disabled:opacity-40"
+              className="px-4 py-2 rounded-control bg-surface border border-surface-border text-primary hover:bg-surface-soft text-xs font-medium disabled:opacity-40"
             >
               Previous Section
             </button>
@@ -208,7 +208,7 @@ export const KnowledgeTransferView: React.FC = () => {
                 setSelectedQuizOption(null);
               }}
               disabled={activeStep === 3}
-              className="px-5 py-2 rounded-full bg-surface-soft hover:bg-surface-subtle text-primary font-medium text-xs disabled:opacity-40 shadow-sm"
+              className="px-5 py-2 rounded-control bg-surface-soft hover:bg-surface-subtle text-primary font-medium text-xs disabled:opacity-40 shadow-sm"
             >
               Next Section
             </button>

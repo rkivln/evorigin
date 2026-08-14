@@ -49,31 +49,31 @@ export const DashboardView: React.FC = () => {
   ];
 
   const categoryData = [
-    { name: 'Industrial Maintenance', value: 45, color: '#A66BC4' },
-    { name: 'Cultural & Crafts', value: 20, color: '#C07BE5' },
-    { name: 'Disaster Recovery', value: 15, color: '#7FBF9A' },
-    { name: 'Family Wisdom', value: 12, color: '#D4A85C' },
-    { name: 'Operational Logic', value: 8, color: '#9B96A2' },
+    { name: 'Industrial Maintenance', value: 45, color: '#2457FF' },
+    { name: 'Cultural & Crafts', value: 20, color: '#10B981' },
+    { name: 'Disaster Recovery', value: 15, color: '#0EA5E9' },
+    { name: 'Family Wisdom', value: 12, color: '#8B5CF6' },
+    { name: 'Operational Logic', value: 8, color: '#F59E0B' },
   ];
 
   const riskDistribution = [
-    { level: 'Critical (>85)', count: 8, color: '#D17A82' },
-    { level: 'High (70-85)', count: 17, color: '#D4A85C' },
-    { level: 'Medium (40-70)', count: 34, color: '#A66BC4' },
-    { level: 'Low (<40)', count: 27, color: '#7FBF9A' },
+    { level: 'Critical (>85)', count: 8, color: '#EF4444' },
+    { level: 'High (70-85)', count: 17, color: '#F59E0B' },
+    { level: 'Medium (40-70)', count: 34, color: '#2457FF' },
+    { level: 'Low (<40)', count: 27, color: '#10B981' },
   ];
 
   return (
     <div className="space-y-8 pb-12">
       <SectionHeader
         number="01"
-        tag="DEMO DATA"
+        tag="ANALYTICS"
         title="Legacy Intelligence Dashboard"
         subtitle="Real-time analytical view of preserved organizational tacit knowledge, risk exposure, and Universal Legacy Graph expansion."
         action={
           <button
             onClick={() => setActivePage('capture')}
-            className="px-5 py-2.5 rounded-full bg-accent hover:brightness-110 text-background font-medium text-xs flex items-center gap-2 shadow-soft-sm transition-all"
+            className="px-5 py-2.5 rounded-pill bg-brand-blue text-white font-bold hover:bg-brand-royal transition-all text-xs flex items-center gap-2 shadow-sm"
           >
             <span>Capture New Legacy</span>
             <ArrowUpRight size={14} />
@@ -86,17 +86,17 @@ export const DashboardView: React.FC = () => {
         {metrics.map((m, idx) => {
           const Icon = m.icon;
           return (
-            <GlassCard key={idx} variant={idx === 1 ? "gold" : "default"} className="space-y-3">
+            <GlassCard key={idx} variant={idx === 1 ? "glow-yellow" : "default"} className="space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-medium text-primary-muted">{m.label}</span>
-                <div className="p-2 rounded-xl bg-surface border border-surface-border text-accent">
+                <span className="text-xs font-bold text-brand-muted">{m.label}</span>
+                <div className="p-2 rounded-control bg-blue-50 text-brand-blue">
                   <Icon size={18} />
                 </div>
               </div>
-              <div className="text-4xl sm:text-5xl font-medium font-sans text-primary tracking-tight">
+              <div className="text-4xl sm:text-5xl font-bold font-sans text-brand-black tracking-tight">
                 {m.value}
               </div>
-              <p className="text-[11px] font-medium text-primary-light">{m.change}</p>
+              <p className="text-xs font-semibold text-brand-muted">{m.change}</p>
             </GlassCard>
           );
         })}
@@ -108,23 +108,33 @@ export const DashboardView: React.FC = () => {
         <GlassCard variant="default" className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-medium font-sans text-primary">Knowledge Preservation Growth</h3>
-              <p className="text-xs text-primary-muted">Captured Knowledge Items vs Graph Connections</p>
+              <h3 className="text-base font-bold text-brand-black">Knowledge Preservation Growth</h3>
+              <p className="text-xs text-brand-muted font-medium">Captured Knowledge Items vs Graph Connections</p>
             </div>
-            <Badge variant="gold">Real-time Stream</Badge>
+            <Badge variant="blue">Real-time Stream</Badge>
           </div>
 
           <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={growthData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.045)" />
-                <XAxis dataKey="month" stroke="#6F6A76" fontSize={11} tickLine={false} />
-                <YAxis stroke="#6F6A76" fontSize={11} tickLine={false} />
+                <defs>
+                  <linearGradient id="colorItems" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#2457FF" stopOpacity={0.25}/>
+                    <stop offset="95%" stopColor="#2457FF" stopOpacity={0}/>
+                  </linearGradient>
+                  <linearGradient id="colorNodes" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#10B981" stopOpacity={0.25}/>
+                    <stop offset="95%" stopColor="#10B981" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#E9EDF3" />
+                <XAxis dataKey="month" stroke="#667085" fontSize={11} tickLine={false} />
+                <YAxis stroke="#667085" fontSize={11} tickLine={false} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#18161C', border: '1px solid rgba(255,255,255,0.10)', borderRadius: '10px', fontSize: '12px', color: '#F3F0F5', boxShadow: '0 10px 30px rgba(0,0,0,0.35)' }}
+                  contentStyle={{ backgroundColor: '#FFFFFF', border: '1px solid #E9EDF3', borderRadius: '12px', fontSize: '12px', color: '#0B0D12', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
                 />
-                <Area type="monotone" dataKey="items" name="Knowledge Items" stroke="#A66BC4" strokeWidth={2} fillOpacity={0.14} fill="#A66BC4" />
-                <Area type="monotone" dataKey="graphNodes" name="Graph Connections" stroke="#C07BE5" strokeWidth={2} fillOpacity={0.22} fill="#C07BE5" />
+                <Area type="monotone" dataKey="items" name="Knowledge Items" stroke="#2457FF" strokeWidth={2.5} fillOpacity={1} fill="url(#colorItems)" />
+                <Area type="monotone" dataKey="graphNodes" name="Graph Connections" stroke="#10B981" strokeWidth={2.5} fillOpacity={1} fill="url(#colorNodes)" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -134,8 +144,8 @@ export const DashboardView: React.FC = () => {
         <GlassCard variant="default" className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-medium font-sans text-primary">Skills Distribution by Domain</h3>
-              <p className="text-xs text-primary-muted">Categorized Tacit Knowledge Breakdown</p>
+              <h3 className="text-base font-bold text-brand-black">Skills Distribution by Domain</h3>
+              <p className="text-xs text-brand-muted font-medium">Categorized Tacit Knowledge Breakdown</p>
             </div>
             <Badge variant="cyan">Multi-Domain</Badge>
           </div>
@@ -158,7 +168,7 @@ export const DashboardView: React.FC = () => {
                   ))}
                 </Pie>
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#18161C', border: '1px solid rgba(255,255,255,0.10)', borderRadius: '10px', fontSize: '12px', color: '#F3F0F5', boxShadow: '0 10px 30px rgba(0,0,0,0.35)' }}
+                  contentStyle={{ backgroundColor: '#FFFFFF', border: '1px solid #E9EDF3', borderRadius: '12px', fontSize: '12px', color: '#0B0D12', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
                 />
               </PieChart>
             </ResponsiveContainer>
@@ -170,19 +180,19 @@ export const DashboardView: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <GlassCard variant="rose" className="lg:col-span-1 space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-base font-medium font-sans text-primary">Legacy Risk Matrix</h3>
+            <h3 className="text-base font-bold text-brand-black">Legacy Risk Matrix</h3>
             <Badge variant="rose">Priority Alert</Badge>
           </div>
           <div className="h-48">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={riskDistribution} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.045)" />
-                <XAxis type="number" stroke="#6F6A76" fontSize={11} tickLine={false} />
-                <YAxis dataKey="level" type="category" stroke="#6F6A76" fontSize={10} width={90} tickLine={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#E9EDF3" />
+                <XAxis type="number" stroke="#667085" fontSize={11} tickLine={false} />
+                <YAxis dataKey="level" type="category" stroke="#667085" fontSize={10} width={90} tickLine={false} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#18161C', border: '1px solid rgba(255,255,255,0.10)', borderRadius: '10px', fontSize: '12px', color: '#F3F0F5', boxShadow: '0 10px 30px rgba(0,0,0,0.35)' }}
+                  contentStyle={{ backgroundColor: '#FFFFFF', border: '1px solid #E9EDF3', borderRadius: '12px', fontSize: '12px', color: '#0B0D12', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
                 />
-                <Bar dataKey="count" fill="#D17A82" radius={[0, 8, 8, 0]} />
+                <Bar dataKey="count" fill="#EF4444" radius={[0, 8, 8, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -192,12 +202,12 @@ export const DashboardView: React.FC = () => {
         <GlassCard variant="default" className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-base font-medium font-sans text-primary">High Priority Preservation Targets</h3>
-              <p className="text-xs text-primary-muted">Skills facing imminent loss due to expert retirement</p>
+              <h3 className="text-base font-bold text-brand-black">High Priority Preservation Targets</h3>
+              <p className="text-xs text-brand-muted font-medium">Skills facing imminent loss due to expert retirement</p>
             </div>
             <button
               onClick={() => setActivePage('risk')}
-              className="text-xs font-medium text-accent hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-brand-blue hover:underline flex items-center gap-1"
             >
               <span>View All Risk Scores</span>
               <ArrowUpRight size={12} />
@@ -205,31 +215,31 @@ export const DashboardView: React.FC = () => {
           </div>
 
           <div className="space-y-2 overflow-x-auto">
-            <div className="p-4 rounded-xl bg-surface border border-surface-border flex items-center justify-between text-xs">
+            <div className="p-4 rounded-control bg-brand-soft border border-brand-border flex items-center justify-between text-xs">
               <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-status-critical"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
                 <div>
-                  <h4 className="font-medium text-primary">CNC Foundation Misalignment Diagnosis</h4>
-                  <p className="text-[11px] text-primary-muted">Expert: Dr. Arun Kumar (34 yrs) • 2 active holders remaining</p>
+                  <h4 className="font-bold text-brand-black">CNC Foundation Misalignment Diagnosis</h4>
+                  <p className="text-[11px] text-brand-muted font-medium">Expert: Dr. Arun Kumar (34 yrs) • 2 active holders remaining</p>
                 </div>
               </div>
               <div className="text-right">
-                <span className="font-sans text-status-critical-text font-medium text-xs bg-status-critical/40 border border-status-critical-text/30 px-2.5 py-0.5 rounded-full">Risk: 78 / 100</span>
-                <p className="text-[10px] text-primary-light mt-1">Interview Recorded</p>
+                <span className="font-sans text-rose-700 font-bold text-xs bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-pill">Risk: 78 / 100</span>
+                <p className="text-[10px] text-brand-muted font-medium mt-1">Interview Recorded</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-surface border border-surface-border flex items-center justify-between text-xs">
+            <div className="p-4 rounded-control bg-brand-soft border border-brand-border flex items-center justify-between text-xs">
               <div className="flex items-center gap-3">
-                <span className="w-2.5 h-2.5 rounded-full bg-status-critical"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
                 <div>
-                  <h4 className="font-medium text-primary">Traditional Ceramic Glaze Flame Acoustics</h4>
-                  <p className="text-[11px] text-primary-muted">Expert: Master Ramanathan (79 yrs) • 1 active holder remaining</p>
+                  <h4 className="font-bold text-brand-black">Traditional Ceramic Glaze Flame Acoustics</h4>
+                  <p className="text-[11px] text-brand-muted font-medium">Expert: Master Ramanathan (79 yrs) • 1 active holder remaining</p>
                 </div>
               </div>
               <div className="text-right">
-                <span className="font-sans text-status-critical-text font-medium text-xs bg-status-critical/40 border border-status-critical-text/30 px-2.5 py-0.5 rounded-full">Risk: 91 / 100</span>
-                <p className="text-[10px] text-primary-light mt-1">Capture Pending</p>
+                <span className="font-sans text-rose-700 font-bold text-xs bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-pill">Risk: 91 / 100</span>
+                <p className="text-[10px] text-brand-muted font-medium mt-1">Capture Pending</p>
               </div>
             </div>
           </div>

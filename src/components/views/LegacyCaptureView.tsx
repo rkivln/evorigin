@@ -63,7 +63,7 @@ export const LegacyCaptureView: React.FC = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 rounded-control text-xs font-medium transition-all ${
                 isActive
                   ? 'bg-accent text-background shadow-soft-sm'
                   : 'bg-surface-soft hover:bg-surface-subtle text-primary-muted border border-surface-border'
@@ -91,7 +91,7 @@ export const LegacyCaptureView: React.FC = () => {
             </div>
 
             {/* AI Question Bubble */}
-            <div className="p-4 rounded-xl bg-surface border border-accent/30 space-y-1.5 shadow-sm">
+            <div className="p-4 rounded-control bg-surface border border-accent/30 space-y-1.5 shadow-sm">
               <span className="text-[10px] font-sans text-accent font-medium uppercase tracking-wider">
                 EVORIGEN AI Prompt #04
               </span>
@@ -110,14 +110,14 @@ export const LegacyCaptureView: React.FC = () => {
                 value={interviewAnswer}
                 onChange={(e) => setInterviewAnswer(e.target.value)}
                 rows={4}
-                className="w-full bg-surface border border-surface-border focus:border-accent rounded-xl p-3.5 text-xs text-primary placeholder-primary-light focus:outline-none leading-relaxed font-sans shadow-sm"
+                className="w-full bg-surface border border-surface-border focus:border-accent rounded-control p-3.5 text-xs text-primary placeholder-primary-light focus:outline-none leading-relaxed font-sans shadow-sm"
               />
             </div>
 
             <div className="flex items-center justify-between pt-2">
               <button
                 onClick={handleSimulateInterview}
-                className="px-5 py-2.5 rounded-full bg-surface border border-accent/40 hover:border-accent text-primary font-medium text-xs flex items-center gap-2 shadow-sm transition-all"
+                className="px-5 py-2.5 rounded-control bg-surface border border-accent/40 hover:border-accent text-primary font-medium text-xs flex items-center gap-2 shadow-sm transition-all"
               >
                 <Sparkles size={14} className="text-accent" />
                 <span>Analyze Expert Answer</span>
@@ -128,7 +128,7 @@ export const LegacyCaptureView: React.FC = () => {
                   runProcessingPipeline();
                   setActivePage('processing');
                 }}
-                className="px-5 py-2.5 rounded-full bg-accent hover:brightness-110 text-background font-medium text-xs flex items-center gap-2 shadow-soft-sm transition-all"
+                className="px-5 py-2.5 rounded-control bg-accent text-white shadow-glow-accent hover:-translate-y-[1px] hover:shadow-[0_8px_24px_rgba(255,112,67,0.16)] transition-all font-medium text-xs flex items-center gap-2 shadow-soft-sm transition-all"
               >
                 <span>Process with EVORIGEN AI</span>
                 <ArrowRight size={14} />
@@ -150,27 +150,27 @@ export const LegacyCaptureView: React.FC = () => {
 
             {liveExtracted ? (
               <div className="space-y-3 animate-in fade-in duration-300">
-                <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between">
+                <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between">
                   <span className="text-xs text-primary-muted">Skill Identified:</span>
                   <span className="text-xs font-medium text-primary">Failure Diagnosis</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between">
+                <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between">
                   <span className="text-xs text-primary-muted">Problem Pattern:</span>
                   <span className="text-xs font-medium text-status-critical-text">Foundation Misalignment</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between">
+                <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between">
                   <span className="text-xs text-primary-muted">Context:</span>
                   <span className="text-xs font-medium text-status-info-text">Post-maintenance vibration</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between">
+                <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between">
                   <span className="text-xs text-primary-muted">Experience Level:</span>
                   <span className="text-xs font-medium text-status-success-text">Expert (34 Years)</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-surface border border-surface-border flex items-center justify-between">
+                <div className="p-3.5 rounded-control bg-surface border border-surface-border flex items-center justify-between">
                   <span className="text-xs text-primary-muted">Extraction Confidence:</span>
                   <span className="text-xs font-medium text-primary">92%</span>
                 </div>
@@ -181,7 +181,7 @@ export const LegacyCaptureView: React.FC = () => {
                       runProcessingPipeline();
                       setActivePage('processing');
                     }}
-                    className="w-full py-3 rounded-full bg-accent hover:brightness-110 text-background font-medium text-xs shadow-soft-sm flex items-center justify-center gap-2 transition-all"
+                    className="w-full py-3 rounded-control bg-accent text-white shadow-glow-accent hover:-translate-y-[1px] hover:shadow-[0_8px_24px_rgba(255,112,67,0.16)] transition-all font-medium text-xs shadow-soft-sm flex items-center justify-center gap-2 transition-all"
                   >
                     <span>Proceed to Full AI Pipeline</span>
                     <ArrowRight size={14} />
@@ -204,7 +204,7 @@ export const LegacyCaptureView: React.FC = () => {
       {activeTab !== 'interview' && (
         <GlassCard variant="default" className="p-8 text-center space-y-6">
           <div className="max-w-xl mx-auto space-y-4">
-            <div className="w-14 h-14 mx-auto rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center text-accent shadow-soft-sm">
+            <div className="w-14 h-14 mx-auto rounded-control bg-accent/20 border border-accent/40 flex items-center justify-center text-accent shadow-soft-sm">
               <Upload size={24} />
             </div>
 
@@ -216,7 +216,7 @@ export const LegacyCaptureView: React.FC = () => {
             </div>
 
             {/* Drop Zone Box */}
-            <label className="block p-8 border-2 border-dashed border-surface-border hover:border-accent rounded-[24px] bg-surface cursor-pointer transition-all">
+            <label className="block p-8 border-2 border-dashed border-surface-border hover:border-accent rounded-control bg-surface cursor-pointer transition-all">
               <input
                 type="file"
                 onChange={handleFileUpload}
@@ -244,7 +244,7 @@ export const LegacyCaptureView: React.FC = () => {
                   runProcessingPipeline();
                   setActivePage('processing');
                 }}
-                className="px-6 py-3 rounded-full bg-accent hover:brightness-110 text-background font-medium text-xs shadow-soft-sm flex items-center gap-2 transition-all"
+                className="px-4 py-2 rounded-control text-sm bg-accent text-white shadow-glow-accent hover:-translate-y-[1px] hover:shadow-[0_8px_24px_rgba(255,112,67,0.16)] transition-all font-medium text-xs shadow-soft-sm flex items-center gap-2 transition-all"
               >
                 <Sparkles size={14} />
                 <span>Start AI Processing Pipeline</span>

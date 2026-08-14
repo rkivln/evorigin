@@ -21,7 +21,9 @@ import {
   Layers,
   ChevronLeft,
   ChevronRight,
-  Flame } from 'lucide-react';
+  Flame,
+  Globe
+} from 'lucide-react';
 
 interface NavItem {
   id: PageId;
@@ -35,11 +37,11 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
   const { activePage, setActivePage, startJudgeDemo } = useDemo();
 
   const mainNav: NavItem[] = [
-    { id: 'landing', label: 'Home / Hero', icon: Sparkles },
-    { id: 'dashboard', label: 'Overview', icon: LayoutDashboard, badge: 'Live' },
+    { id: 'landing', label: 'Website & Platform', icon: Globe, badge: 'Public' },
+    { id: 'dashboard', label: 'Overview Dashboard', icon: LayoutDashboard, badge: 'Live' },
     { id: 'capture', label: 'Legacy Capture', icon: Mic, badge: 'AI' },
     { id: 'processing', label: 'Knowledge Processing', icon: Cpu },
-    { id: 'graph', label: 'Universal Legacy Graph', icon: Share2, badge: '3D' },
+    { id: 'graph', label: 'Universal Legacy Gra..', icon: Share2, badge: 'Nodes' },
     { id: 'assistant', label: 'EVORIGEN AI Assistant', icon: Bot },
     { id: 'library', label: 'Knowledge Library', icon: BookOpen },
     { id: 'risk', label: 'Legacy Risk Analysis', icon: ShieldAlert },
@@ -60,33 +62,47 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
 
   return (
     <aside
-      className={`fixed top-0 left-0 bottom-0 z-40 bg-surface border-r border-surface-border shadow-card transition-all duration-300 flex flex-col ${
+      className={`fixed top-0 left-0 bottom-0 z-40 bg-white/90 backdrop-blur-md border-r border-brand-border transition-all duration-300 flex flex-col ${
         collapsed ? 'w-16' : 'w-64'
       }`}
     >
       {/* Brand Header */}
-      <div className={`h-16 px-4 flex items-center border-b border-surface-border ${
-        collapsed ? 'justify-center' : 'justify-between'
-      }`}>
+      <div className="h-16 px-4 flex items-center justify-between border-b border-brand-border">
         {!collapsed && (
           <button 
             onClick={() => setActivePage('landing')}
-            className="flex items-center text-left group"
+            className="flex items-center gap-2.5 text-left group"
           >
+            <div className="w-8 h-8 rounded-control bg-[#FF4D00] flex items-center justify-center text-white shadow-glow-orange font-bold text-sm">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
             <div>
-              <span className="font-sans font-medium text-base tracking-tight text-primary block leading-none">
+              <span className="font-sans font-extrabold text-base tracking-wider text-brand-black block leading-none">
                 EVORIGEN
               </span>
-              <span className="text-[10px] font-sans text-accent tracking-wider uppercase block mt-1 font-medium">
+              <span className="text-[10px] font-sans text-[#FF4D00] tracking-wider uppercase block mt-1 font-semibold">
                 Legacy Intelligence
               </span>
             </div>
           </button>
         )}
 
+        {collapsed && (
+          <button 
+            onClick={() => setActivePage('landing')}
+            className="mx-auto w-8 h-8 rounded-control bg-[#FF4D00] flex items-center justify-center text-white font-bold text-sm"
+          >
+            E
+          </button>
+        )}
+
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 text-primary-muted hover:text-primary rounded-full hover:bg-surface-subtle transition-colors"
+          className="p-1.5 text-brand-muted hover:text-brand-black rounded-control hover:bg-brand-soft transition-colors"
           title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
@@ -99,18 +115,18 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
         <div className="mb-3 px-1">
           <button
             onClick={startJudgeDemo}
-            className={`w-full flex items-center justify-center gap-2 py-2 px-3 rounded-full bg-accent hover:brightness-110 text-background font-medium text-xs shadow-soft-sm transition-all ${
-              collapsed ? 'px-0' : ''
+            className={`w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-pill bg-[#FF4D00] text-white shadow-glow-orange hover:bg-[#E03E00] transition-all font-semibold text-xs ${
+              collapsed ? 'px-0 rounded-control' : ''
             }`}
             title="Start Guided Judge Demonstration"
           >
-            <Sparkles size={14} className="text-background" />
-            {!collapsed && <span>START JUDGE DEMO</span>}
+            <Sparkles size={14} className="text-white" />
+            {!collapsed && <span>START DEMO TOUR</span>}
           </button>
         </div>
 
-        <div className="text-[10px] font-sans font-medium uppercase tracking-wider text-primary-light px-3 py-1">
-          {!collapsed && "Platform Services"}
+        <div className="text-[10px] font-sans font-bold uppercase tracking-widest text-brand-muted px-3 py-1">
+          {!collapsed && "Platform Navigation"}
         </div>
 
         {mainNav.map((item) => {
@@ -120,26 +136,26 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
             <button
               key={item.id}
               onClick={() => setActivePage(item.id)}
-              className={`w-full flex items-center gap-3 py-2 rounded-full text-xs font-medium transition-all group ${collapsed ? "justify-center px-0" : "justify-start px-3"} ${
+              className={`w-full flex items-center gap-3 py-2 rounded-control text-[11px] font-semibold tracking-wide transition-all group ${collapsed ? "justify-center px-0" : "justify-start px-3"} ${
                 isActive
-                  ? 'bg-accent text-background shadow-soft-sm'
-                  : 'text-primary-muted hover:text-primary hover:bg-surface-subtle'
+                  ? 'bg-[#FFF0EB] text-[#FF4D00] shadow-2xs font-bold border-l-2 border-[#FF4D00]'
+                  : 'text-brand-muted hover:text-brand-black hover:bg-brand-soft border border-transparent'
               }`}
               title={collapsed ? item.label : undefined}
             >
               <Icon
                 size={16}
-                className={isActive ? 'text-background' : 'text-primary-muted group-hover:text-accent'}
+                className={isActive ? 'text-[#FF4D00]' : 'text-brand-muted group-hover:text-[#FF4D00]'}
               />
               {!collapsed && (
                 <span className="flex-1 text-left truncate">{item.label}</span>
               )}
               {!collapsed && item.badge && (
                 <span
-                  className={`text-[9px] font-sans font-medium px-2 py-0.5 rounded-full ${
+                  className={`text-[9px] font-mono font-medium px-1.5 py-0.5 border rounded-pill ${
                     isActive
-                      ? 'bg-black/20 text-background'
-                      : 'bg-surface-subtle border border-surface-border text-primary-muted'
+                      ? 'bg-orange-100 text-[#FF4D00] border-orange-200'
+                      : 'bg-brand-soft border border-brand-border text-brand-muted'
                   }`}
                 >
                   {item.badge}
@@ -149,8 +165,8 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
           );
         })}
 
-        <div className="pt-3 text-[10px] font-sans font-medium uppercase tracking-wider text-primary-light px-3 py-1">
-          {!collapsed && "Judge & Technical"}
+        <div className="pt-3 text-[10px] font-sans font-bold uppercase tracking-widest text-brand-muted px-3 py-1">
+          {!collapsed && "Developer & Architecture"}
         </div>
 
         {devNav.map((item) => {
@@ -160,16 +176,16 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
             <button
               key={item.id}
               onClick={() => setActivePage(item.id)}
-              className={`w-full flex items-center gap-3 py-2 rounded-full text-xs font-medium transition-all group ${collapsed ? "justify-center px-0" : "justify-start px-3"} ${
+              className={`w-full flex items-center gap-3 py-2 rounded-control text-[11px] font-semibold tracking-wide transition-all group ${collapsed ? "justify-center px-0" : "justify-start px-3"} ${
                 isActive
-                  ? 'bg-surface-subtle text-primary border border-accent/40 shadow-soft-sm'
-                  : 'text-primary-muted hover:text-primary hover:bg-surface-subtle'
+                  ? 'bg-orange-50 text-[#FF4D00] border border-[#FF4D00] font-bold'
+                  : 'text-brand-muted hover:text-brand-black hover:bg-brand-soft border border-transparent'
               }`}
               title={collapsed ? item.label : undefined}
             >
               <Icon
                 size={16}
-                className={isActive ? 'text-accent' : 'text-primary-muted group-hover:text-primary'}
+                className={isActive ? 'text-[#FF4D00]' : 'text-brand-muted group-hover:text-brand-black'}
               />
               {!collapsed && (
                 <span className="flex-1 text-left truncate">{item.label}</span>
@@ -179,31 +195,23 @@ export const Sidebar: React.FC<{collapsed: boolean, setCollapsed: (c: boolean) =
         })}
       </div>
 
-      {/* Footer Profile Status & Theme Button */}
-      <div className="p-3 border-t border-surface-border bg-surface-soft space-y-2">
+      {/* Footer Profile Status */}
+      <div className="p-3 border-t border-brand-border bg-brand-soft/60 space-y-2">
         {!collapsed && (
-          <>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-surface-subtle border border-surface-border overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
-                    alt="Judge Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs font-medium text-primary truncate">SIH 2026 Evaluator</p>
-                  <p className="text-[10px] font-medium text-status-success-text flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-status-success"></span>
-                    PROTOTYPE ACTIVE
-                  </p>
-                </div>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-orange-100 border border-orange-200 overflow-hidden flex items-center justify-center font-bold text-[#FF4D00] text-xs">
+                EI
               </div>
-
-              
+              <div className="flex-1 min-w-0">
+                <p className="text-[11px] font-bold text-brand-black truncate">EVORIGEN Workspace</p>
+                <p className="text-[10px] font-semibold text-emerald-600 flex items-center gap-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  PLATFORM ONLINE
+                </p>
+              </div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </aside>

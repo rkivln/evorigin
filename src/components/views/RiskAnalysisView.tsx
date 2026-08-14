@@ -69,34 +69,34 @@ export const RiskAnalysisView: React.FC = () => {
                   <Badge variant={item.riskLevel === 'Critical' ? 'rose' : item.riskLevel === 'High' ? 'gold' : 'cyan'}>
                     {item.riskLevel} Risk
                   </Badge>
-                  <span className="font-sans text-lg font-medium text-primary bg-surface px-3 py-1 rounded-full border border-surface-border shadow-sm">
+                  <span className="font-sans text-lg font-medium text-primary bg-surface px-3 py-1 rounded-control border border-surface-border shadow-sm">
                     {item.riskScore} / 100
                   </span>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-sans">
-                <div className="p-3.5 rounded-2xl bg-surface/80 border border-surface-border space-y-1">
+                <div className="p-3.5 rounded-control bg-surface/80 border border-surface-border space-y-1">
                   <span className="text-primary-muted text-[10px] block uppercase font-medium">Vulnerability Reason</span>
                   <p className="text-status-critical-text font-medium">{item.reason}</p>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-surface/80 border border-surface-border space-y-1">
+                <div className="p-3.5 rounded-control bg-surface/80 border border-surface-border space-y-1">
                   <span className="text-primary-muted text-[10px] block uppercase font-medium">Projected Loss Impact</span>
                   <p className="text-primary">{item.lossImpact}</p>
                 </div>
 
-                <div className="p-3.5 rounded-2xl bg-surface/80 border border-surface-border space-y-1">
+                <div className="p-3.5 rounded-control bg-surface/80 border border-surface-border space-y-1">
                   <span className="text-primary-muted text-[10px] block uppercase font-medium">Active Experts</span>
                   <p className="text-primary font-medium">{item.expertNames.join(', ')}</p>
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-2xl bg-accent/10 border border-accent/30 text-primary text-xs font-sans flex items-center justify-between">
+              <div className="p-3.5 rounded-control bg-accent/10 border border-accent/30 text-primary text-xs font-sans flex items-center justify-between">
                 <span>Action: {item.preservationAction}</span>
                 <button
                   onClick={() => setActivePage('capture')}
-                  className="px-3.5 py-1.5 rounded-full bg-surface-soft hover:bg-surface-subtle text-primary font-medium text-xs flex items-center gap-1 shadow-sm transition-all"
+                  className="px-3.5 py-1.5 rounded-control bg-surface-soft hover:bg-surface-subtle text-primary font-medium text-xs flex items-center gap-1 shadow-sm transition-all"
                 >
                   <span>Preserve Now</span>
                   <ArrowRight size={12} className="text-accent" />
