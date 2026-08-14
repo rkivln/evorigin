@@ -1,32 +1,19 @@
-# React + TypeScript + Vite
+**EVORIGEN** is an AI-powered **Legacy Intelligence Platform** designed to preserve valuable human and institutional knowledge that is often lost across generations. While traditional systems store documents, photographs, videos, and records, they rarely preserve the **experience, reasoning, skills, decision-making, and practical knowledge** behind them.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+EVORIGEN captures knowledge from **voice recordings, interviews, videos, documents, images, and organizational records** and uses **Artificial Intelligence, Natural Language Processing, Speech-to-Text, Large Language Models, and Computer Vision** to identify important skills, people, decisions, events, problems, solutions, and lessons.
 
-Currently, two official plugins are available:
+The extracted information is organized into a **Universal Legacy Graph**, connecting people, skills, decisions, events, organizations, artifacts, and outcomes. Using **Retrieval-Augmented Generation (RAG), vector search, and knowledge graphs**, users can interact with preserved knowledge through an AI assistant and retrieve relevant information with its original sources and context.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The platform also introduces a **Legacy Risk Score** to identify valuable knowledge that is at risk of disappearing, a **Legacy Value Index** to prioritize knowledge based on its future usefulness, and a **Future Impact Simulator** to explore how present decisions may affect organizations, communities, and future generations over different time horizons.
 
-## React Compiler
+The initial application focuses on **corporate knowledge preservation**, where the expertise of retiring employees can be captured and transferred to the next generation. The same platform can later be extended to **family heritage, traditional crafts, cultural preservation, education, disaster recovery, environmental knowledge, and business succession**.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The core workflow is:
 
-## Expanding the Oxlint configuration
+**Capture → Understand → Extract → Connect → Preserve → Retrieve → Transfer → Simulate**
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+The technology stack includes **React/Next.js, Node.js, Python/FastAPI, PostgreSQL, Neo4j, Vector Database, RAG, LLMs, NLP, Speech-to-Text, Computer Vision, Docker, and Cloud Infrastructure**.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+Ultimately, EVORIGEN aims to move legacy management from simply **preserving the past** to **preserving the capability to build the future**.
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+> **“EVORIGEN doesn't just preserve what people knew — it preserves how they solved problems and makes that knowledge useful for the people who come next.”**
