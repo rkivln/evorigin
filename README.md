@@ -28,5 +28,36 @@ EVORIGEN addresses this problem by transforming **experience into structured kno
 ### In One Sentence
 
 > **Valuable human and institutional knowledge is disappearing because current systems preserve information rather than the context, reasoning, skills, and capability behind it.**
+>
+> ## Solution Statement
+
+**EVORIGEN** is an **AI-powered Legacy Intelligence Platform** designed to preserve not just information, but the **knowledge, experience, reasoning, skills, decisions, and capabilities** that are at risk of being lost across generations.
+
+EVORIGEN captures knowledge from **voice recordings, interviews, videos, documents, images, and other sources**. AI then processes this information using **speech recognition, Natural Language Processing, Large Language Models, and semantic analysis** to identify important people, skills, decisions, events, problems, solutions, and lessons.
+
+The extracted knowledge is organized into a **Universal Legacy Graph**, which connects people, skills, experiences, decisions, events, organizations, artifacts, and outcomes. This transforms scattered information into a connected knowledge system that can be understood and reused.
+
+Using **Retrieval-Augmented Generation (RAG)**, future users can interact with this preserved knowledge through an AI assistant. Instead of searching through hundreds of documents, users can ask questions naturally and receive answers grounded in the original preserved sources.
+
+EVORIGEN also introduces two additional intelligence layers:
+
+* **Legacy Risk Score** — identifies valuable knowledge that is at high risk of disappearing.
+* **Legacy Value Index** — estimates the relevance, uniqueness, transferability, and future usefulness of preserved knowledge.
+* **Future Impact Simulator** — allows users to explore how present decisions could potentially affect knowledge, organizations, communities, and future generations over different time horizons.
+
+The platform can be applied to **corporate knowledge transfer, family heritage, traditional skills, cultural preservation, education, disaster recovery, environmental knowledge, and business succession**.
+
+### Core Workflow
+
+**Capture → Understand → Extract → Connect → Preserve → Retrieve → Transfer → Simulate**
+
+### Core Innovation
+
+> **EVORIGEN transforms experience into knowledge, knowledge into intelligence, and intelligence into transferable capability for future generations.**
+
+In simple terms:
+
+> **EVORIGEN doesn't just preserve what people knew — it preserves how they thought, how they solved problems, and how that knowledge can be used by the people who come next.**
+
 
 “EVORIGEN extends cultural heritage preservation beyond digitizing objects and locations. It preserves the people, stories, skills, traditions, oral histories, relationships and contextual knowledge behind the heritage, and makes that knowledge interactively accessible through AI.”
