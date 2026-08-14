@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import Lenis from 'lenis';
 import { DemoProvider } from './context/DemoContext';
 import { useDemo } from './context/useDemo';
 import { Sidebar } from './components/layout/Sidebar';
@@ -94,6 +95,16 @@ const MainContent: React.FC = () => {
 };
 
 export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+    });
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <DemoProvider>
       <MainContent />
