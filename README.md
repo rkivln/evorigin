@@ -1,3 +1,4 @@
+##EVORIGEN
 **EVORIGEN** is an AI-powered **Legacy Intelligence Platform** designed to preserve valuable human and institutional knowledge that is often lost across generations. While traditional systems store documents, photographs, videos, and records, they rarely preserve the **experience, reasoning, skills, decision-making, and practical knowledge** behind them.
 
 EVORIGEN captures knowledge from **voice recordings, interviews, videos, documents, images, and organizational records** and uses **Artificial Intelligence, Natural Language Processing, Speech-to-Text, Large Language Models, and Computer Vision** to identify important skills, people, decisions, events, problems, solutions, and lessons.
