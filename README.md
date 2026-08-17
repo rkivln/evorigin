@@ -2,7 +2,7 @@
 
 ### AI-Powered Legacy Intelligence & Knowledge Preservation Platform
 
-### PROBLEM STATEMENT
+# PROBLEM STATEMENT
 
 ### **Critical knowledge is being lost because it exists in people, not systems.**
 
@@ -32,7 +32,7 @@ Future employees or generations may have access to information but lack the **co
 
 ---
 
-## SOLUTION
+# SOLUTION
 
 ### **EVORIGEN**
 
@@ -76,7 +76,7 @@ EVORIGEN additionally identifies knowledge that is at risk of disappearing throu
 
 ---
 
-# 3. HOW EVORIGEN SOLVES THE PROBLEM
+### HOW EVORIGEN SOLVES THE PROBLEM
 
 ### Traditional Approach
 
@@ -115,7 +115,7 @@ Therefore:
 
 ---
 
-# 4. SYSTEM WORKFLOW
+# SYSTEM WORKFLOW
 
 ## STEP 1 — CAPTURE
 
@@ -269,7 +269,7 @@ The system compares possible scenarios across different time horizons.
 
 ---
 
-# 5. COMPLETE TECHNICAL FLOW
+# COMPLETE TECHNICAL FLOW
 
 ```text
                 KNOWLEDGE SOURCES
@@ -319,7 +319,7 @@ The system compares possible scenarios across different time horizons.
 
 ---
 
-# 6. CORE TECHNOLOGY STACK
+# CORE TECHNOLOGY STACK
 
 ### AI / ML
 
@@ -379,7 +379,7 @@ The system compares possible scenarios across different time horizons.
 
 ---
 
-# 7. EXPECTED IMPACT
+# EXPECTED IMPACT
 
 EVORIGEN can reduce the loss of valuable knowledge by making expertise:
 
